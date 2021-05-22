@@ -30,6 +30,9 @@ provider "kubernetes" {
   cluster_ca_certificate = "${base64decode(var.cluster_ca_certificate)}"
 }
 
+
+/*
+
 resource "kubernetes_deployment" "nginx" {
   metadata {
     name = "scalable-nginx-example"
@@ -65,6 +68,8 @@ resource "kubernetes_deployment" "nginx" {
   }
 }
 
+*/
+/*
 resource "kubernetes_service" "nginx" {
   metadata {
     name = "nginx-example"
@@ -82,33 +87,4 @@ resource "kubernetes_service" "nginx" {
     type = "NodePort"
   }
 }
-
-resource "kubernetes_cron_job" "demo" {
-  metadata {
-    name = "demo"
-  }
-  spec {
-    concurrency_policy            = "Replace"
-    failed_jobs_history_limit     = 5
-    schedule                      = "*/1 * * * *"
-    starting_deadline_seconds     = 10
-    successful_jobs_history_limit = 10
-    job_template {
-      metadata {}
-      spec {
-        backoff_limit              = 2
-        ttl_seconds_after_finished = 10
-        template {
-          metadata {}
-          spec {
-            container {
-              name    = "hello"
-              image   = "busybox"
-              command = ["/bin/sh", "-c", "date; echo Hello from the Kubernetes cluster"]
-            }
-          }
-        }
-      }
-    }
-  }
-}
+*/
