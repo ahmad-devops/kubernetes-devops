@@ -74,7 +74,6 @@ resource "kubernetes_service" "mongo-express-service" {
     selector = {
       app = kubernetes_deployment.mongo-express.spec.0.template.0.metadata[0].labels.app
     }
-    session_affinity = "ClientIP"
     port {
       port        = 8081
       target_port = 8081
