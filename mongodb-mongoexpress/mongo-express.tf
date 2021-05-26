@@ -77,7 +77,7 @@ resource "kubernetes_service" "mongo-express-service" {
     port {
       port        = 8081
       target_port = 8081
-      node_port = 30201
+      node_port = 30209
     }
     type = "LoadBalancer"
   }
