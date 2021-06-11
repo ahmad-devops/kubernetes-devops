@@ -1,0 +1,10 @@
+---
+
+- hosts: localservers
+  tasks:
+    - name: Find Uptime
+      shell: /usr/bin/uptime
+      register: result
+    - name: Print debug message
+      debug:
+        msg: The server uptime is {{ result.stdout }}

@@ -1,0 +1,12 @@
+---
+
+- hosts: localservers
+  tasks:
+  - name: Install yamllint and ansible-lint package
+    become: true
+    become_user: root
+    apt:
+      name:
+        - yamllint
+        - ansible-lint
+      state: latest

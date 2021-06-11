@@ -1,0 +1,9 @@
+---
+
+- hosts: localservers
+  tasks:
+    - name: Copy files to another directory.
+      copy:
+        src: /etc/xattr.conf
+        dest: /tmp/xattr.conf
+        backup: yes

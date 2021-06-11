@@ -1,0 +1,5 @@
+skip_list:
+  - '403'
+
+
+#https://stackoverflow.com/questions/61734226/ansible-lint-reports-package-installs-should-not-use-latest

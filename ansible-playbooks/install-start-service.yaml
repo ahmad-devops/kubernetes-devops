@@ -1,0 +1,16 @@
+---
+
+- hosts: localservers
+  tasks:
+  - name: Install lldpad package
+    become: true
+    become_user: root
+    apt:
+      name: lldpad
+      state: latest
+  - name: check lldpad service status
+    become: true
+    become_user: root 
+    service:
+      name: lldpad
+      state: stopped
