@@ -1,0 +1,15 @@
+---
+
+- hosts: localservers
+  become: true
+  become_user: root
+  tasks:
+    - name: Change file permission
+      file:
+        path: /tmp/xattr.conf
+        state: absent
+    - name: Create directory
+      file:
+        path: /tmp/gudda
+        state: directory
+        mode: '0755'

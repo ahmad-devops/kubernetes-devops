@@ -1,0 +1,12 @@
+---
+
+- hosts: localservers
+  tasks:
+    - name: Record the uptime
+      shell: /usr/bin/uptime
+      register: result
+    - name: Create file and insert the value in it.
+      lineinfile:
+        path: /tmp/uptime.txt
+        line: The server uptime is {{ result.stdout }}
+        create: yes

@@ -1,0 +1,9 @@
+---
+
+- hosts: localservers
+  tasks:
+    - name: Git clone to the dest folder and archive the folder
+      git:
+        repo: https://github.com/ahmad-devops/ansible-setup-passwordless-ssh.git
+        dest: /tmp/testing
+        archive: /tmp/testing.zip

@@ -1,0 +1,11 @@
+---
+
+- hosts: localservers
+  become: true
+  become_user: root
+  tasks:
+    - name: Create symlink to gudda
+      file:
+        src: /tmp/gudda
+        dest: /tmp/dest
+        state: link

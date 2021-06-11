@@ -1,0 +1,20 @@
+---
+
+- hosts: localservers
+  become: true
+  become_user: root
+  tasks:
+    - name: Change file permission
+      file:
+        path: /tmp/xattr.conf
+        mode: '0777'
+    - name: change sercurity.evm to enable
+      lineinfile:
+        path: /tmp/xattr.conf
+        regexp: '^system.nfs4acl			'
+        line: system.nfs4acl			enable
+    - name: Insert string after
+      lineinfile:
+        path: /tmp/xattr.conf
+        insertafter: '^system.posix_acl_access		'
+        line: inserting this line after
