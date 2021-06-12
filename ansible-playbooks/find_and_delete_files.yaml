@@ -1,0 +1,29 @@
+---
+
+- hosts: localservers
+  tasks:
+    - name : Create multiple files
+      shell: /usr/bin/touch /tmp/hello{1..5}.txt
+      args:
+        executable: /bin/bash
+
+#https://docs.ansible.com/ansible/latest/collections/ansible/builtin/shell_module.html
+
+    - name: find the hello*.txt files
+      find:
+        paths: /tmp/
+        file_type: file
+        patterns: ^hello
+        use_regex: true
+      register: files_to_delete
+    - name: Print file names
+      debug:
+        var: files_to_delete.files
+    - name: Remove file glob
+      file:
+        path: "{{ item.path }}"
+        state: absent
+      with_items: "{{ files_to_delete.files }}"
+
+
+#https://www.mydailytutorials.com/ansible-delete-multiple-files-directories-ansible/

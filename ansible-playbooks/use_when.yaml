@@ -1,0 +1,15 @@
+---
+
+- hosts: localservers
+  tasks:
+  - name: find a string in file
+    shell: grep enable /tmp/xattr.conf 
+    register: grep_result
+  - name: Debug
+    debug:
+      var: grep_result
+  - name: run when above is true
+    shell: echo "contains the word enable"
+    when: "'enable' in grep_result.stdout"
+
+#https://github.com/ansible/ansible-examples/blob/master/language_features/register_logic.yml

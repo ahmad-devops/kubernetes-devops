@@ -1,0 +1,12 @@
+---
+
+- hosts: localservers
+  tasks:
+    - name: Delete multiple files
+      file:
+        path: "{{ item }}"
+        state: absent
+      with_items:
+        - /tmp/hello1.txt
+        - /tmp/hello2.txt
+        - /tmp/hello3.txt

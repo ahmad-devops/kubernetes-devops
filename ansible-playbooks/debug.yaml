@@ -14,3 +14,4 @@
         var: display_file_content
         verbosity: 2
 
+#https://linuxhint.com/ansible_debug_module/
