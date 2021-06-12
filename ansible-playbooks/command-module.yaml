@@ -1,0 +1,10 @@
+---
+
+- hosts: localservers
+  tasks:
+    - name: return /tmp/xattr.conf to registered var
+      command: cat /tmp/xattr.conf
+      register: result
+    - name: print the /tmp/xattr.conf output to console
+      debug:
+        msg: "{{ result.stdout }}"

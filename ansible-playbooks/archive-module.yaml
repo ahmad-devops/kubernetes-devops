@@ -1,0 +1,8 @@
+---
+
+- hosts: localservers
+  tasks:
+    - name: Compress directory /tmp/ansible-examples.git as /tmp/ansible-examples.gz
+      archive:
+        path: /tmp/ansible-examples.git
+        dest: /tmp/ansible-examples.tgz
