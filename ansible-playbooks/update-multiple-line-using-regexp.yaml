@@ -1,0 +1,15 @@
+---
+
+- hosts: localservers
+  become: true
+  tasks:
+    - name : Check elasticsearch status
+      lineinfile:
+        path: /tmp/jvm.options
+        regexp: "{{ item.regexp }}"
+        line: "{{ item.line }}"
+      with_items:
+        - { regexp: '## -Xms4g', line: '-Xms512m' }
+        - { regexp: '## -Xmx4g', line: '-Xmx512m' }
+
+#https://stackoverflow.com/questions/24334115/ansible-lineinfile-for-several-lines
